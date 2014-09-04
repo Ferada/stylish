@@ -1,0 +1,9 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("monitoring.cytora.org") {
+
+#menu h2 {
+  background: #444 !important;
+}
+
+}
