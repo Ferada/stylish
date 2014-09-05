@@ -2,8 +2,8 @@
 
 @-moz-document domain("monitoring.cytora.org") {
 
-#menu h2 {
-  background: #444 !important;
+.menuli_style1, .menuli_style2 {
+  padding-left: 0 !important;
 }
 
 }
