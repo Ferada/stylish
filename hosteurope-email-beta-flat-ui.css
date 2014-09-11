@@ -7,4 +7,13 @@
   background-image: none !important;
 }
 
+.foldertree-sidepanel {
+  background: none !important;
+}
+
+.mail-detail-pane .mail-detail-decorator .mail-detail {
+  box-shadow: none !important;
+  padding: 0;
+}
+
 }
