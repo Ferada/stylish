@@ -7,13 +7,12 @@
 // @require     https://gist.githubusercontent.com/arantius/3123124/raw/grant-none-shim.js
 // @require     http://arantius.com/misc/greasemonkey/imports/dollarx.js
 // @resource    css https://arantius.com/misc/greasemonkey/imports/hacker-news-comment-collapse.css
-// @version     5
+// @version     6
 // @grant       none
 // ==/UserScript==
 
 var cssPoint = document.getElementsByTagName('head')[0];
 cssPoint = cssPoint || document.body;
-console.log(cssPoint);
 var cssNode = document.createElement('link');
 cssNode.setAttribute('href', GM_getResourceURL('css'));
 cssNode.setAttribute('type', 'text/css');
@@ -34,8 +33,7 @@ var controls = (function() {
 })();
 
 var commentRows = $x("//span[@class = 'comhead']/ancestor::tr[2]");
-// Start at one to skip the post itself.
-for (var i = 1, commentRow; commentRow = commentRows[i]; i++) {
+for (var i = 0, commentRow; commentRow = commentRows[i]; i++) {
   var spacerWid = $x(".//img[contains(@src, 's.gif')]/@width", commentRow)[0];
   var depth = parseInt(spacerWid.nodeValue, 10) / 40;
   commentRow.setAttribute('depth', depth);
