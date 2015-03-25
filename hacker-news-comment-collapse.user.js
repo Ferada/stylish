@@ -7,7 +7,7 @@
 // @require     https://gist.githubusercontent.com/arantius/3123124/raw/grant-none-shim.js
 // @require     http://arantius.com/misc/greasemonkey/imports/dollarx.js
 // @resource    css https://arantius.com/misc/greasemonkey/imports/hacker-news-comment-collapse.css
-// @version     6
+// @version     7
 // @grant       none
 // ==/UserScript==
 
@@ -21,11 +21,11 @@ cssPoint.appendChild(cssNode);
 
 var controls = (function() {
   var frag = document.createDocumentFragment();
-  var d1 = document.createElement('div');
+  var d1 = document.createElement('a');
   d1.className = 'collapse';
   d1.textContent = '[-]';
   frag.appendChild(d1);
-  var d2 = document.createElement('div');
+  var d2 = document.createElement('a');
   d2.className = 'expand';
   d2.textContent = '[+]';
   frag.appendChild(d2);
