@@ -7,9 +7,42 @@
 // @require     https://gist.githubusercontent.com/arantius/3123124/raw/grant-none-shim.js
 // @require     http://arantius.com/misc/greasemonkey/imports/dollarx.js
 // @resource    css https://arantius.com/misc/greasemonkey/imports/hacker-news-comment-collapse.css
-// @version     7
+// @version     8
 // @grant       none
 // ==/UserScript==
+
+function nextRow(el) {
+  do {
+   el = el.nextSibling;
+  } while (el && (el.nodeType != el.ELEMENT_NODE || el.tagName != 'TR'));
+  return el;
+}
+
+function toggleRowTo(rowEl, toggleTo) {
+  if (!rowEl) return;
+  var depth = parseInt(rowEl.getAttribute('depth'), 10);
+
+  if ('collapse' == toggleTo) {
+    var rowAlter = function(row) {
+      row.className += ' collapse';
+    }
+    rowEl.className += ' collapse-line';
+  } else if ('expand' == toggleTo) {
+    var rowAlter = function(row) {
+      row.className = row.className.replace(/ *collapse(-line)? *()/g, ' ');
+    }
+    rowAlter(rowEl);
+  } else {
+    // Not our el!
+    return;
+  }
+
+  rowEl = nextRow(rowEl);
+  while (rowEl && parseInt(rowEl.getAttribute('depth'), 10) > depth) {
+    rowAlter(rowEl);
+    rowEl = nextRow(rowEl);
+  }
+}
 
 var cssPoint = document.getElementsByTagName('head')[0];
 cssPoint = cssPoint || document.body;
@@ -21,11 +54,11 @@ cssPoint.appendChild(cssNode);
 
 var controls = (function() {
   var frag = document.createDocumentFragment();
-  var d1 = document.createElement('a');
+  var d1 = document.createElement('div');
   d1.className = 'collapse';
   d1.textContent = '[-]';
   frag.appendChild(d1);
-  var d2 = document.createElement('a');
+  var d2 = document.createElement('div');
   d2.className = 'expand';
   d2.textContent = '[+]';
   frag.appendChild(d2);
@@ -54,30 +87,4 @@ for (var i = 1, commentRow; commentRow = commentRows[i]; i++) {
 window.addEventListener('click', function(event) {
   var rowEl = $x("./ancestor::tr[2]", event.target)[0];
   toggleRowTo(rowEl, event.target.className);
-}, false);
-
-function toggleRowTo(rowEl, toggleTo) {
-  if (!rowEl) return;
-  var depth = parseInt(rowEl.getAttribute('depth'), 10);
-
-  if ('collapse' == toggleTo) {
-    var rowAlter = function(row) {
-      row.className += ' collapse';
-    }
-    rowEl.className += ' collapse-line';
-  } else if ('expand' == toggleTo) {
-    var rowAlter = function(row) {
-      row.className = row.className.replace(/ *collapse(-line)? *()/g, ' ');
-    }
-    rowAlter(rowEl);
-  } else {
-    // Not our el!
-    return;
-  }
-
-  rowEl = rowEl.nextSibling;
-  while (rowEl && parseInt(rowEl.getAttribute('depth'), 10) > depth) {
-    rowAlter(rowEl);
-    rowEl = rowEl.nextSibling;
-  }
-}
+}, true);
