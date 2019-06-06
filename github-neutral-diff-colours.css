@@ -1,0 +1,39 @@
+.blob-code-deletion {
+  background-color: #f0eeff;
+}
+
+.blob-code-deletion .x {
+  background-color: #c1b8fd;
+}
+
+.blob-num-deletion {
+  background-color: #e0dcff;
+}
+
+.blob-code-addition {
+  background-color: #fff3e6;
+}
+
+.blob-code-addition .x {
+  background-color: #f2ceac;
+}
+
+.blob-num-addition {
+  background-color: #ffe4cd;
+}
+
+.block-diff-added {
+  background-color: #be712c;
+}
+
+.block-diff-deleted {
+  background-color: #3f24cb;
+}
+
+.diffstat .text-green {
+  color: #be712c !important;
+}
+
+.diffstat .text-red {
+    color: #3f24cb !important;
+}
