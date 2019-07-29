@@ -1,0 +1,31 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("github.com") {
+
+.language-color, .repository-topics-container, .footer {
+    display: none !important;
+}
+
+.pagehead {
+    margin-bottom: 6px;
+    padding-top: 6px;
+}
+
+.overall-summary {
+    margin-top: 6px;
+}
+
+.repohead .repohead-details-container {
+    margin-bottom: 6px;
+}
+
+.Header {
+	padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.file-navigation.in-mid-page {
+    margin-top: 12px;
+}
+
+}
