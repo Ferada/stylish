@@ -1,3 +1,56 @@
+@namespace url(http://www.w3.org/1999/xhtml);
+
+@-moz-document domain("github.com") {
+
+@media (prefers-color-scheme: dark) {
+
+/* addition hue 91,3 */
+/* deletion hue is 303,1 */
+
+.blob-code-deletion {
+  background-color: #251e2e;
+}
+
+.blob-code-deletion .x {
+  background-color: #574081;
+}
+
+.blob-num-deletion {
+  background-color: #3b2d53;
+}
+
+.blob-code-addition {
+  background-color: #262212;
+}
+
+.blob-code-addition .x {
+  background-color: #594b14;
+}
+
+.blob-num-addition {
+  background-color: #443c16;
+}
+
+.block-diff-added, .diffstat-block-added {
+  background-color: #be712c;
+}
+
+.block-diff-deleted, .diffstat-block-deleted {
+  background-color: #3f24cb;
+}
+
+.diffstat .color-fg-success {
+  color: #be712c !important;
+}
+
+.diffstat .color-fg-danger {
+    color: #3f24cb !important;
+}
+
+}
+
+@media (prefers-color-scheme: light) {
+
 .blob-code-deletion {
   background-color: #f0eeff;
 }
@@ -22,18 +75,22 @@
   background-color: #ffe4cd;
 }
 
-.block-diff-added {
+.block-diff-added, .diffstat-block-added {
   background-color: #be712c;
 }
 
-.block-diff-deleted {
+.block-diff-deleted, .diffstat-block-deleted {
   background-color: #3f24cb;
 }
 
-.diffstat .text-green {
+.diffstat .color-fg-success {
   color: #be712c !important;
 }
 
-.diffstat .text-red {
+.diffstat .color-fg-danger {
     color: #3f24cb !important;
+}
+
+}
+
 }
