@@ -4,93 +4,85 @@
 
 @media (prefers-color-scheme: dark) {
 
-/* addition hue 91,3 */
+/* addition hue is 91,3 */
 /* deletion hue is 303,1 */
 
-.blob-code-deletion {
-  background-color: #251e2e;
+:root {
+  --diffBlob-additionNum-bgColor: #443c16 !important;
+  --diffBlob-additionLine-bgColor: #262212 !important;
+  --diffBlob-deletionNum-bgColor: #3b2d53 !important;
+  --diffBlob-deletionLine-bgColor: #251e2e !important;
+  --diffBlob-additionWord-bgColor: #594b14 !important;
+  --diffBlob-deletionWord-bgColor: #574081 !important;
 }
 
-.blob-code-deletion .x {
-  background-color: #574081;
-}
-
-.blob-num-deletion {
-  background-color: #3b2d53;
-}
-
-.blob-code-addition {
-  background-color: #262212;
-}
-
-.blob-code-addition .x {
-  background-color: #594b14;
-}
-
-.blob-num-addition {
-  background-color: #443c16;
-}
-
-.block-diff-added, .diffstat-block-added {
-  background-color: #be712c;
-}
-
-.block-diff-deleted, .diffstat-block-deleted {
-  background-color: #3f24cb;
-}
-
-.diffstat .color-fg-success {
-  color: #be712c !important;
-}
-
-.diffstat .color-fg-danger {
-    color: #3f24cb !important;
+#diff-content-parent, .js-diff-container, #files_bucket, #diffstat {
+  --bgColor-success-emphasis: #be712c !important;
+  --borderColor-success-emphasis: var(--bgColor-success-emphasis);
+  --bgColor-danger-emphasis: #3f24cb !important;
+  --borderColor-danger-emphasis: var(--bgColor-danger-emphasis);
 }
 
 }
 
 @media (prefers-color-scheme: light) {
 
+:root {
+  --diffBlob-additionNum-bgColor: #ffe4cd !important;
+  --diffBlob-additionLine-bgColor: #fff3e6 !important;
+  --diffBlob-deletionNum-bgColor: #e0dcff !important;
+  --diffBlob-deletionLine-bgColor: #f0eeff !important;
+  --diffBlob-additionWord-bgColor: #f2ceac !important;
+  --diffBlob-deletionWord-bgColor: #c1b8fd !important;
+}
+
+#diff-content-parent, .js-diff-container, #diffstat {
+  --bgColor-success-emphasis: #be712c;
+  --borderColor-success-emphasis: var(--bgColor-success-emphasis);
+  --bgColor-danger-emphasis: #3f24cb;
+  --borderColor-danger-emphasis: var(--bgColor-danger-emphasis);
+}
+
+}
+
 .blob-code-deletion {
-  background-color: #f0eeff;
+  background-color: var(--diffBlob-deletionLine-bgColor);
 }
 
 .blob-code-deletion .x {
-  background-color: #c1b8fd;
+  background-color: var(--diffBlob-deletionWord-bgColor);
 }
 
 .blob-num-deletion {
-  background-color: #e0dcff;
+  background-color: var(--diffBlob-deletionNum-bgColor);
 }
 
 .blob-code-addition {
-  background-color: #fff3e6;
+  background-color: var(--diffBlob-additionLine-bgColor);
 }
 
 .blob-code-addition .x {
-  background-color: #f2ceac;
+  background-color: var(--diffBlob-additionWord-bgColor);
 }
 
 .blob-num-addition {
-  background-color: #ffe4cd;
+  background-color: var(--diffBlob-additionNum-bgColor);
 }
 
 .block-diff-added, .diffstat-block-added {
-  background-color: #be712c;
+  background-color: var(--bgColor-success-emphasis);
 }
 
 .block-diff-deleted, .diffstat-block-deleted {
-  background-color: #3f24cb;
+  background-color: var(--bgColor-danger-emphasis);
 }
 
-.diffstat .color-fg-success {
-  color: #be712c !important;
+.diffstat .color-fg-success, .fgColor-success {
+  color: var(--borderColor-success-emphasis) !important;
 }
 
-.diffstat .color-fg-danger {
-    color: #3f24cb !important;
-}
-
+.diffstat .color-fg-danger, .fgColor-danger {
+  color: var(--borderColor-danger-emphasis) !important;
 }
 
 }
